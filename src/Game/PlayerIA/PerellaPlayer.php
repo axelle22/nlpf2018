@@ -42,6 +42,50 @@ class PerellaPlayer extends Player
         // -------------------------------------    -----------------------------------------------------
 
         $choice = parent::scissorsChoice();
+        $getMyLastChoice_first = $this->result->getLastChoiceFor($this->mySide);
+        $getOponentLastChoice_first = $this->result->getLastChoiceFor($this->opponentSide);
+        $getMyLastScore_first = $this->result->getLastScoreFor($this->mySide);
+        $getOpponentScore_first = $this->result->getLastScoreFor($this->opponentSide);
+
+        $opponentLast_Choice = $this->result->getChoicesFor($this->opponentSide);
+        $myLast_Choice = $this->result->getChoicesFor($this->mySide);
+
+        $playRock = $this->result->getStatsFor($this->opponentSide)['rock'];
+        $playScissors = $this->result->getStatsFor($this->opponentSide)['scissors'];
+        $playPaper = $this->result->getStatsFor($this->opponentSide)['paper'];
+
+
+        $opponentLast_score = $this->result->getLastScoreFor($this->mySide);
+        $myLast_score = $this->result->getLastScoreFor($this->mySide);
+
+        $getNumber_rounds = $this->result->getNbRound();
+
+        if ($getNumber_rounds == 0)
+        {
+            return parent::rockChoice();
+        }
+        else
+        {
+            if (($playRock / $getNumber_rounds) * 100 > 90)
+            {
+                return parent::paperChoice();
+            }
+            else if (($playPaper /$getNumber_rounds) * 100 > 90)
+            {
+                return parent::scissorsChoice();
+            }
+            else if (($playScissors / $getNumber_rounds) * 100 > 90)
+            {
+                return parent::rockChoice();
+            }
+            else if ($opponentLast_score > $myLast_score)
+            {
+                 return $opponentLast_Choice;
+            }
+             else
+                  return $myLast_Choice;
+        }
+
 
         return $choice;
     }

@@ -41,11 +41,7 @@ class PerellaPlayer extends Player
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
 
-        $choice = parent::scissorsChoice();
-        $getMyLastChoice_first = $this->result->getLastChoiceFor($this->mySide);
-        $getOponentLastChoice_first = $this->result->getLastChoiceFor($this->opponentSide);
-        $getMyLastScore_first = $this->result->getLastScoreFor($this->mySide);
-        $getOpponentScore_first = $this->result->getLastScoreFor($this->opponentSide);
+     
 
         $opponentLast_Choice = $this->result->getChoicesFor($this->opponentSide);
         $myLast_Choice = $this->result->getChoicesFor($this->mySide);

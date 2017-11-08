@@ -84,7 +84,14 @@ class PerellaPlayer extends Player
                     return parent::scissorsChoice();
             }
              else
-                  return $myLast_Choice;
+             {
+                if ($myLast_Choice == 'rock')
+                   return parent::rockChoice();
+                 else if ($myLast_Choice == 'paper')
+                    return parent::paperChoice();
+                  else
+                    return parent::scissorsChoice();
+              }
         }
 
 
